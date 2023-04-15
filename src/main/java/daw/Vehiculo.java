@@ -32,6 +32,22 @@ public class Vehiculo {
     public String toString() {
         return matricula + ":" + marca + ":" + modelo + ":" + color;
     }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
     
     //Randomizar la marca
     private Marca marcaRandom(){
