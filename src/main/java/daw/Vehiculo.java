@@ -28,6 +28,22 @@ public class Vehiculo {
         this.color = colorRandom();
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
     @Override
     public String toString() {
         return matricula + ":" + marca + ":" + modelo + ":" + color;

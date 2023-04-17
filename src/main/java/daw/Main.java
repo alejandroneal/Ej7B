@@ -9,7 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import static javax.management.Query.lt;
 
 /**
@@ -41,6 +44,26 @@ public class Main {
         System.out.println("\n============================================================");
         System.out.println("Lista sacada del fichero vehículos.txt");
         List<Vehiculo> listaVehiculos2 = leerFicheroVehiculo();
+        
+        //Obtener el nº de cocher de color rojo
+        Predicate<Vehiculo> criterioColor = (v)->v.getColor().equals(Color.ROJO);
+        long contador = 0;
+        contador = listaVehiculos2.stream()
+                .filter(criterioColor)
+                .count();
+        System.out.println("Nº de vehículos rojos: " + contador);
+        
+        System.out.println("\n============================================================");
+        System.out.println("Tipos de marcas:");
+        listaVehiculos2.stream()
+                .map(v->v.getMarca()) //mapeo de las marcas
+                .distinct() //solo muestran las diferentes (no se repiten)
+                .forEach(System.out::println); //mostrar por pantalla
+        
+        System.out.println("\n============================================================");
+        System.out.println("Lista ordenada por marcas:");
+        Comparator<Vehiculo> criterioMarca = (v1,v2)->v1.getMarca().compareTo(v2.getMarca());
+        Collections.sort(listaVehiculos2, criterioMarca);
         listaVehiculos2.forEach(System.out::println);
 
         ficheroDeCadaTipoVehiculo();
