@@ -13,7 +13,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
-import static javax.management.Query.lt;
 
 /**
  *
@@ -109,6 +108,7 @@ public class Main {
 
                     //Introducimos los datos del array en un vehículo Turismo
                     Vehiculo auxVehiculo = new Turismo();
+                    
                     auxVehiculo.setMatricula(arraySplit[0]);
                     switch (arraySplit[1]) {
                         case "SEAT":
@@ -145,6 +145,8 @@ public class Main {
                             auxVehiculo.setColor(Color.VERDE);
                             break;
                     }
+                    auxVehiculo.setDisponible(Boolean.valueOf(arraySplit[5]));
+                    auxVehiculo.setTarifa(Double.parseDouble(arraySplit[6]));
                     //Añadimos el vehículo Turísmo en la lista de Vehiculo
                     listaVehiculos.add(auxVehiculo);
 
@@ -195,6 +197,8 @@ public class Main {
                             auxVehiculo.setColor(Color.VERDE);
                             break;
                     }
+                    auxVehiculo.setDisponible(Boolean.valueOf(arraySplit[5]));
+                    auxVehiculo.setTarifa(Double.parseDouble(arraySplit[6]));
                     //Añadimos el vehículo Deportivo en la lista de Vehiculo
                     listaVehiculos.add(auxVehiculo);
 
@@ -245,6 +249,8 @@ public class Main {
                             auxVehiculo.setColor(Color.VERDE);
                             break;
                     }
+                    auxVehiculo.setDisponible(Boolean.valueOf(arraySplit[5]));
+                    auxVehiculo.setTarifa(Double.parseDouble(arraySplit[6]));
                     //Añadimos el vehículo Furgoneta en la lista de Vehiculo
                     listaVehiculos.add(auxVehiculo);
 

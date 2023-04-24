@@ -15,17 +15,28 @@ import org.apache.commons.lang3.RandomStringUtils;
  */
 public class Vehiculo {
     
+    private String bastidor;
     private String matricula;
     private Marca marca;
     private String modelo;
     private Color color;
+    private boolean disponible;
+    private double tarifa;
+    private final double [] tarifas = {2.5, 5, 7.5, 8.99, 10};
 
     public Vehiculo() {
+        this.bastidor = RandomStringUtils.randomAlphanumeric(7).toUpperCase();
         this.matricula = RandomStringUtils.randomNumeric(4) 
                 + RandomStringUtils.randomAlphabetic(3).toUpperCase();
         this.marca = marcaRandom();
         this.modelo = modeloRandom();
         this.color = colorRandom();
+        if (new Random().nextInt(0, 2) == 0) {
+            this.disponible = true;
+        } else {
+            this.disponible = false;
+        }
+        this.tarifa = tarifas[new Random().nextInt(0, tarifas.length)];
     }
 
     public String getMatricula() {
@@ -44,9 +55,21 @@ public class Vehiculo {
         return color;
     }
 
+    public String getBastidor() {
+        return bastidor;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public double getTarifa() {
+        return tarifa;
+    }
+
     @Override
     public String toString() {
-        return matricula + ":" + marca + ":" + modelo + ":" + color;
+        return bastidor + ":" + matricula + ":" + marca + ":" + modelo + ":" + color + ":" + disponible + ":" + tarifa;
     }
 
     public void setMatricula(String matricula) {
@@ -63,6 +86,18 @@ public class Vehiculo {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public void setBastidor(String bastidor) {
+        this.bastidor = bastidor;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public void setTarifa(double tarifa) {
+        this.tarifa = tarifa;
     }
     
     //Randomizar la marca
